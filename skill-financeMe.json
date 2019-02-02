@@ -1,0 +1,259 @@
+{
+  "name": "financeMe",
+  "intents": [
+    {
+      "intent": "loans",
+      "examples": [
+        {
+          "text": "i do not know nothing about loans"
+        },
+        {
+          "text": "loans"
+        },
+        {
+          "text": "tell me about loans"
+        }
+      ],
+      "description": "loans"
+    },
+    {
+      "intent": "savings",
+      "examples": [
+        {
+          "text": "tell me about savings"
+        },
+        {
+          "text": "savings"
+        },
+        {
+          "text": "i do not know nothing about savings"
+        }
+      ],
+      "description": "savings"
+    },
+    {
+      "intent": "tax",
+      "examples": [
+        {
+          "text": "i want to learn about taxes"
+        },
+        {
+          "text": "taxes"
+        },
+        {
+          "text": "tell me about taxes"
+        }
+      ],
+      "description": "taxes"
+    }
+  ],
+  "entities": [
+    {
+      "entity": "loan",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "loan",
+          "synonyms": [
+            "loans",
+            "credit",
+            "debt",
+            "lending"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "tax",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "tax",
+          "synonyms": []
+        },
+        {
+          "type": "synonyms",
+          "value": "taxes",
+          "synonyms": []
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "bank",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "bank",
+          "synonyms": [
+            "banks",
+            "bankers"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    },
+    {
+      "entity": "savings",
+      "values": [
+        {
+          "type": "synonyms",
+          "value": "savings",
+          "synonyms": [
+            "saving",
+            "deposits",
+            "purchases",
+            "premiums"
+          ]
+        }
+      ],
+      "fuzzy_match": true
+    }
+  ],
+  "language": "en",
+  "metadata": {
+    "api_version": {
+      "major_version": "v1",
+      "minor_version": "2018-09-20"
+    }
+  },
+  "description": "",
+  "dialog_nodes": [
+    {
+      "type": "standard",
+      "title": "savings",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "no problem! get ready to learn a lot about savings!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "metadata": {},
+      "conditions": "#savings || @savings",
+      "dialog_node": "node_3_1549139217224",
+      "previous_sibling": "node_2_1549139139285"
+    },
+    {
+      "type": "standard",
+      "title": "loans",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "oops... someone need a loan?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "metadata": {},
+      "conditions": "#loans || @loan",
+      "dialog_node": "node_4_1549139310730",
+      "previous_sibling": "node_3_1549139217224"
+    },
+    {
+      "type": "standard",
+      "title": "taxes",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "sure thing! i can tell you how taxes work, or do you want to know something specific?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "parent": "Welcome",
+      "metadata": {},
+      "conditions": "#tax || @tax",
+      "dialog_node": "node_2_1549139139285"
+    },
+    {
+      "type": "standard",
+      "title": "Anything else",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "I didn't understand. You can try rephrasing."
+              },
+              {
+                "text": "Can you reword your statement? I'm not understanding."
+              },
+              {
+                "text": "I didn't get your meaning."
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "anything_else",
+      "dialog_node": "Anything else",
+      "previous_sibling": "Welcome"
+    },
+    {
+      "type": "standard",
+      "title": "Welcome",
+      "output": {
+        "generic": [
+          {
+            "values": [
+              {
+                "text": "Welcome! I am here to teach you how to finance!"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          },
+          {
+            "title": "",
+            "source": "https://i.gifer.com/FtEb.gif",
+            "response_type": "image"
+          },
+          {
+            "values": [
+              {
+                "text": "would you like  me to teach you about taxes, savings or loans?"
+              }
+            ],
+            "response_type": "text",
+            "selection_policy": "sequential"
+          }
+        ]
+      },
+      "metadata": {},
+      "conditions": "welcome",
+      "dialog_node": "Welcome"
+    }
+  ],
+  "workspace_id": "efffe67b-2ecd-4bb6-8578-abea8aa5f1df",
+  "counterexamples": [],
+  "system_settings": {
+    "tooling": {
+      "store_generic_responses": true
+    }
+  },
+  "learning_opt_out": false,
+  "status": "Available"
+}
