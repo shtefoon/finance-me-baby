@@ -29,7 +29,7 @@ app.use(bodyParser.json());
 // Create the service wrapper
 
 var assistant = new AssistantV2({
-  iam_apikey: 'q4RCWjXBIZU9RHDh8NNtszzNu7Qg1KKrByhuGMpeHZAK',
+  iam_apikey: 'API',
   version: '2018-11-08'
 });
 
@@ -43,7 +43,7 @@ var newContext = {
 
 // Endpoint to be call from the client side
 app.post('/api/message', function (req, res) {
-  var assistantId = process.env.ASSISTANT_ID || '799d8e24-5d9c-4851-b6c7-37b96e5b3978';
+  var assistantId = process.env.ASSISTANT_ID || 'API KEY';
   if (!assistantId || assistantId === '') {
     return res.json({
       'output': {
@@ -91,7 +91,7 @@ app.post('/api/message', function (req, res) {
 
 app.get('/api/session', function (req, res) {
   assistant.createSession({
-    assistant_id: process.env.ASSISTANT_ID || '799d8e24-5d9c-4851-b6c7-37b96e5b3978',
+    assistant_id: process.env.ASSISTANT_ID || 'API KEY',
   }, function (error, response) {
     if (error) {
       return res.send(error);
